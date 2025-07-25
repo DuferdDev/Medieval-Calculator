@@ -40,6 +40,7 @@ Numbers get represented as numbers.
 Constants get represented as a number, aka.: `3 + pi` = `6.14...`
 
 Functions need to be written with round brackets after the name and with an expression inside them, aka.: `3 + round(4.5)` = `8`
+
 Functions can be inside other functions.
 
 Whitespaces are ignored entirely.
