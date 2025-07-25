@@ -6,11 +6,11 @@ This is a simple calculator Java Swing app. Just in medieval theme.
 
 ### OPERATIONS
 
-- Addition
-- Subtraction
-- Multiplication
-- Division
-- Exponentiation
+- `+` - Addition
+- `-` - Subtraction
+- `*` - Multiplication
+- `/` - Division
+- `^` - Exponentiation
 
 ### CONSTANTS
 
