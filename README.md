@@ -1,18 +1,34 @@
-## Getting Started
+## ABOUT
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is a simple calculator Java Swing app. Just in medieval theme.
 
-## Folder Structure
+## FEATURES
 
-The workspace contains two folders by default, where:
+# OPERATIONS
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- Exponentiation
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+# CONSTANTS
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- pi
+- tau
+- e
+- golden ratio (phi)
 
-## Dependency Management
+# FUNCTIONS
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- sqrt = Square Root
+- abs = Absolute Value
+- sin = Sinus
+- cos = Cosinus
+- tan = Tangent
+- cot = Cotangent
+- rad = Takes degrees and converts them to radians
+- deg = same as 'rad' but the other way around
+- round = Round
+- floor = Floor
+- ceil = Ceil
