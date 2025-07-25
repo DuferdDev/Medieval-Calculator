@@ -2,6 +2,8 @@
 
 This is a simple calculator Java Swing app. Just in medieval theme.
 
+![Calculator Image with pi]("docs/images/image0.png")
+
 ## FEATURES
 
 ### OPERATIONS
