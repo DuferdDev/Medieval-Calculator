@@ -4,7 +4,7 @@ This is a simple calculator Java Swing app. Just in medieval theme.
 
 ## FEATURES
 
-# OPERATIONS
+### OPERATIONS
 
 - Addition
 - Subtraction
