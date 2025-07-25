@@ -12,14 +12,14 @@ This is a simple calculator Java Swing app. Just in medieval theme.
 - Division
 - Exponentiation
 
-# CONSTANTS
+### CONSTANTS
 
 - pi
 - tau
 - e
 - golden ratio (phi)
 
-# FUNCTIONS
+### FUNCTIONS
 
 - sqrt = Square Root
 - abs = Absolute Value
