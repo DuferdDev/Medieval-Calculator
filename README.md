@@ -4,6 +4,10 @@ This is a simple calculator Java Swing app. Just in medieval theme.
 
 <img width="500" height="500" alt="Screenshot from 2025-07-25 14-21-55" src="https://github.com/user-attachments/assets/d3b4f2e5-d450-4b38-af6e-8d95efba216f" />
 
+## DEPENDENCIES
+
+- JDK 21+
+
 ## FEATURES
 
 ### OPERATIONS
