@@ -2,7 +2,7 @@
 
 This is a simple calculator Java Swing app. Just in medieval theme.
 
-![Calculator Image with pi]("docs/images/image0.png")
+<img width="500" height="500" alt="image0" src="https://github.com/user-attachments/assets/c5815b0a-f74d-4a26-bdd7-732b9e9fb03e" />
 
 ## FEATURES
 
