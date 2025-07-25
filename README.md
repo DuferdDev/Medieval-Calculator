@@ -14,7 +14,7 @@ This is a simple calculator Java Swing app. Just in medieval theme.
 
 ### CONSTANTS
 
-- pi
+- `pi`
 - tau
 - e
 - golden ratio (phi)
@@ -32,3 +32,6 @@ This is a simple calculator Java Swing app. Just in medieval theme.
 - round = Round
 - floor = Floor
 - ceil = Ceil
+
+## HOW TO USE
+
