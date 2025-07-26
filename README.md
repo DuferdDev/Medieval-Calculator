@@ -1,6 +1,6 @@
 ## ABOUT
 
-This is a simple calculator app made with Java Swing. Just in medieval theme.
+This is a simple calculator app made in Java Swing. Just in medieval theme.
 
 <img width="400" height="400" alt="Screenshot from 2025-07-25 14-21-55" src="https://github.com/user-attachments/assets/d3b4f2e5-d450-4b38-af6e-8d95efba216f" />
 
@@ -43,9 +43,9 @@ This is a simple calculator app made with Java Swing. Just in medieval theme.
 
 Numbers get represented as numbers.
 
-Constants get represented as a number, aka.: `3 + pi` = `6.14...`
+Constants get represented as a number (`3 + pi` = `6.14...`).
 
-Functions need to be written with round brackets after the name and with an expression inside them, aka.: `3 + round(4.5)` = `8`
+Functions need to be written with round brackets after the name and with an expression inside them (`3 + round(4.5)` = `8`).
 
 Functions can be inside other functions.
 
