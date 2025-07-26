@@ -76,23 +76,23 @@ public class Expression {
 		}
 
 		return switch (operation) {
-			case "+" -> exps[0] + exps[1];
-			case "-" -> exps[0] - exps[1];
-			case "*" -> exps[0] * exps[1];
-			case "/" -> exps[0] / exps[1];
-			case "^" -> Math.pow(exps[0], exps[1]);
-			case "sqrt" -> Math.sqrt(exps[0]);
-			case "abs" -> Math.abs(exps[0]);
-			case "sin" -> Math.sin(exps[0]);
-			case "cos" -> Math.cos(exps[0]);
-			case "tan" -> Math.tan(exps[0]);
-			case "cot" -> Math.cos(exps[0]) / Math.sin(exps[0]);
-			case "rad" -> Math.toRadians(exps[0]);
-			case "deg" -> Math.toDegrees(exps[0]);
-			case "round" -> Math.round(exps[0]);
-			case "floor" -> Math.floor(exps[0]);
-			case "ceil" -> Math.ceil(exps[0]);
-			default -> Double.NaN;
+		case "+" -> exps[0] + exps[1];
+		case "-" -> exps[0] - exps[1];
+		case "*" -> exps[0] * exps[1];
+		case "/" -> exps[0] / exps[1];
+		case "^" -> Math.pow(exps[0], exps[1]);
+		case "sqrt" -> Math.sqrt(exps[0]);
+		case "abs" -> Math.abs(exps[0]);
+		case "sin" -> Math.sin(exps[0]);
+		case "cos" -> Math.cos(exps[0]);
+		case "tan" -> Math.tan(exps[0]);
+		case "cot" -> Math.cos(exps[0]) / Math.sin(exps[0]);
+		case "rad" -> Math.toRadians(exps[0]);
+		case "deg" -> Math.toDegrees(exps[0]);
+		case "round" -> Math.round(exps[0]);
+		case "floor" -> Math.floor(exps[0]);
+		case "ceil" -> Math.ceil(exps[0]);
+		default -> Double.NaN;
 		};
 	}
 
@@ -104,10 +104,11 @@ public class Expression {
 		int divIndex = subexpressionStrings.lastIndexOf("/");
 
 		int[] operationIndexes = new int[] {
-				(plusIndex > -1 && minusIndex > -1) ? Math.min(plusIndex, minusIndex) : Math.max(plusIndex, minusIndex),
-				(multIndex > -1 && divIndex > -1) ? Math.min(multIndex, divIndex) : Math.max(multIndex, divIndex),
-				subexpressionStrings.indexOf("^"),
-		};
+				(plusIndex > -1 && minusIndex > -1) ? Math.min(plusIndex, minusIndex)
+						: Math.max(plusIndex, minusIndex),
+				(multIndex > -1 && divIndex > -1) ? Math.min(multIndex, divIndex)
+						: Math.max(multIndex, divIndex),
+				subexpressionStrings.indexOf("^"), };
 
 		for (int i = 0; i < operationIndexes.length; i++) {
 			if (operationIndexes[i] != -1) {
@@ -135,11 +136,11 @@ public class Expression {
 
 	private double resolveConstant(String constantString) {
 		double result = switch (constantString.replace("-", "").replace("+", "")) {
-			case "pi" -> Math.PI;
-			case "tau" -> Math.TAU;
-			case "e" -> Math.E;
-			case "phi", "goldenRatio", "gratio", "gRatio" -> (1.0 + Math.sqrt(5.0)) / 2.0;
-			default -> Double.NaN;
+		case "pi" -> Math.PI;
+		case "tau" -> Math.TAU;
+		case "e" -> Math.E;
+		case "phi", "goldenRatio", "gratio", "gRatio" -> (1.0 + Math.sqrt(5.0)) / 2.0;
+		default -> Double.NaN;
 		};
 		if (constantString.startsWith("-")) {
 			result = -result;
@@ -147,7 +148,8 @@ public class Expression {
 		return result;
 	}
 
-	private void extractExpressionsWithOperation(ArrayList<String> subexpressionStrings, int operatorIndex) {
+	private void extractExpressionsWithOperation(ArrayList<String> subexpressionStrings,
+			int operatorIndex) {
 		String expStr0 = "";
 		for (int i = 0; i < operatorIndex; i++) {
 			expStr0 += subexpressionStrings.get(i);
@@ -184,16 +186,30 @@ public class Expression {
 		for (int i = 0; i < expressionString.length(); i++) {
 			char curc = expressionString.charAt(i);
 			switch (curc) {
-				case '(':
-					insideBrackets++;
+			case '(':
+				insideBrackets++;
+				currentStringPart += curc;
+				break;
+			case ')':
+				insideBrackets--;
+				currentStringPart += curc;
+				break;
+			case '+', '*', '/', '^':
+				if (insideBrackets > 0) {
 					currentStringPart += curc;
-					break;
-				case ')':
-					insideBrackets--;
+				} else {
+					subexpressionStrings.add(currentStringPart);
+					currentStringPart = "";
 					currentStringPart += curc;
-					break;
-				case '+', '*', '/', '^':
-					if (insideBrackets > 0) {
+					subexpressionStrings.add(currentStringPart);
+					currentStringPart = "";
+				}
+				break;
+			case '-':
+				if (insideBrackets > 0) {
+					currentStringPart += curc;
+				} else {
+					if (currentStringPart.isEmpty()) {
 						currentStringPart += curc;
 					} else {
 						subexpressionStrings.add(currentStringPart);
@@ -202,25 +218,11 @@ public class Expression {
 						subexpressionStrings.add(currentStringPart);
 						currentStringPart = "";
 					}
-					break;
-				case '-':
-					if (insideBrackets > 0) {
-						currentStringPart += curc;
-					} else {
-						if (currentStringPart.isEmpty()) {
-							currentStringPart += curc;
-						} else {
-							subexpressionStrings.add(currentStringPart);
-							currentStringPart = "";
-							currentStringPart += curc;
-							subexpressionStrings.add(currentStringPart);
-							currentStringPart = "";
-						}
-					}
-					break;
-				default:
-					currentStringPart += curc;
-					break;
+				}
+				break;
+			default:
+				currentStringPart += curc;
+				break;
 			}
 		}
 		if (!currentStringPart.isEmpty()) {

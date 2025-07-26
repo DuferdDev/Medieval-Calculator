@@ -55,7 +55,8 @@ public class CalculatorWindow {
 
 		frame.setLocation(sw / 2 - fw / 2, sh / 2 - fh / 2);
 
-		// Font oldStyleFont = getFontFromFile("/resources/fonts/NotJamOldStyle14.ttf");
+		// Font oldStyleFont =
+		// getFontFromFile("/resources/fonts/NotJamOldStyle14.ttf");
 		Font undeadPixelFont = getFontFromFile("/resources/fonts/Undead Pixel 8.ttf");
 		Font blackLetterFont = getFontFromFile("/resources/fonts/NotJamBlkltr16.ttf");
 
@@ -83,11 +84,13 @@ public class CalculatorWindow {
 		JLabel titleLabel = getTitleLabel(fw, blackLetterFont);
 		frame.add(titleLabel);
 
-		BufferedImage minimizeImage = ImageIO.read(App.class.getResource("/resources/images/minimize-4x4.png"));
+		BufferedImage minimizeImage = ImageIO
+				.read(App.class.getResource("/resources/images/minimize-4x4.png"));
 		JPanel clickableMinimizePanel = getClickableMinimizePanel(minimizeImage);
 		frame.add(clickableMinimizePanel);
 
-		BufferedImage crossImage = ImageIO.read(App.class.getResource("/resources/images/cross-4x4.png"));
+		BufferedImage crossImage = ImageIO
+				.read(App.class.getResource("/resources/images/cross-4x4.png"));
 		JPanel clickableCloseCross = getClickableCloseCross(crossImage);
 		frame.add(clickableCloseCross);
 
@@ -98,24 +101,16 @@ public class CalculatorWindow {
 		frame.add(expressionTextField);
 
 		// NUMBER CLICKABLE LABELS
-		int[][] numberLabelRows = new int[][] {
-				{ 7, 8, 9 },
-				{ 4, 5, 6 },
-				{ 1, 2, 3 }
-		};
+		int[][] numberLabelRows = new int[][] { { 7, 8, 9 }, { 4, 5, 6 }, { 1, 2, 3 } };
 		int buttonSpacing = 1;
 		int buttonWidth = 11;
 		for (int i = 0; i < numberLabelRows.length; i++) {
 			for (int j = 0; j < numberLabelRows[i].length; j++) {
 				int num = numberLabelRows[i][j];
-				JLabel clickableLabel = UIElementFactory.createClickableLabel(String.valueOf(num), defaultFont,
-						() -> addToExpressionText(String.valueOf(num)));
-				setComponentBoundsInPixels(
-						clickableLabel,
-						8 + (buttonWidth + buttonSpacing) * j,
-						46 + (buttonWidth + buttonSpacing) * i,
-						buttonWidth,
-						buttonWidth);
+				JLabel clickableLabel = UIElementFactory.createClickableLabel(String.valueOf(num),
+						defaultFont, () -> addToExpressionText(String.valueOf(num)));
+				setComponentBoundsInPixels(clickableLabel, 8 + (buttonWidth + buttonSpacing) * j,
+						46 + (buttonWidth + buttonSpacing) * i, buttonWidth, buttonWidth);
 				frame.add(clickableLabel);
 			}
 		}
@@ -124,32 +119,21 @@ public class CalculatorWindow {
 		JLabel cLabel0 = UIElementFactory.createClickableLabel("0", defaultFont, () -> {
 			addToExpressionText("0");
 		});
-		setComponentBoundsInPixels(
-				cLabel0,
-				8,
-				46 + (buttonWidth + buttonSpacing) * 3,
-				buttonWidth,
+		setComponentBoundsInPixels(cLabel0, 8, 46 + (buttonWidth + buttonSpacing) * 3, buttonWidth,
 				buttonWidth);
 		frame.add(cLabel0);
 
 		// OPERATOR CLICKABLE LABELS
-		String[][] operatorLabelRows = new String[][] {
-				{ "+", "-" },
-				{ "*", "/" },
-				{ "^" }
-		};
+		String[][] operatorLabelRows = new String[][] { { "+", "-" }, { "*", "/" }, { "^" } };
 		int xoffset = 8 + (buttonWidth + buttonSpacing) * 3 + 1;
 		for (int i = 0; i < operatorLabelRows.length; i++) {
 			for (int j = 0; j < operatorLabelRows[i].length; j++) {
 				String value = operatorLabelRows[i][j];
 				JLabel clickableLabel = UIElementFactory.createClickableLabel(value, defaultFont,
 						() -> addToExpressionText(value));
-				setComponentBoundsInPixels(
-						clickableLabel,
+				setComponentBoundsInPixels(clickableLabel,
 						xoffset + (buttonWidth + buttonSpacing) * j,
-						46 + (buttonWidth + buttonSpacing) * i,
-						buttonWidth,
-						buttonWidth);
+						46 + (buttonWidth + buttonSpacing) * i, buttonWidth, buttonWidth);
 				frame.add(clickableLabel);
 			}
 		}
@@ -157,30 +141,20 @@ public class CalculatorWindow {
 		// BRACKETS CLICKABLE LABELS
 		JLabel cLabelLeftBracket = UIElementFactory.createClickableLabel("(", defaultFont,
 				() -> addToExpressionText("("));
-		setComponentBoundsInPixels(
-				cLabelLeftBracket,
-				xoffset,
-				46 + (buttonWidth + buttonSpacing) * 3,
-				buttonWidth,
-				buttonWidth);
+		setComponentBoundsInPixels(cLabelLeftBracket, xoffset,
+				46 + (buttonWidth + buttonSpacing) * 3, buttonWidth, buttonWidth);
 		frame.add(cLabelLeftBracket);
 		JLabel cLabelRightBracket = UIElementFactory.createClickableLabel(")", defaultFont,
 				() -> addToExpressionText(")"));
-		setComponentBoundsInPixels(
-				cLabelRightBracket,
-				xoffset + buttonWidth + buttonSpacing,
-				46 + (buttonWidth + buttonSpacing) * 3,
-				buttonWidth,
-				buttonWidth);
+		setComponentBoundsInPixels(cLabelRightBracket, xoffset + buttonWidth + buttonSpacing,
+				46 + (buttonWidth + buttonSpacing) * 3, buttonWidth, buttonWidth);
 		frame.add(cLabelRightBracket);
 
-		JLabel cLabelClear = UIElementFactory.createClickableLabel("CLEAR", defaultFont, 29f, () -> {
-			expressionTextField.setText("");
-		});
-		setComponentBoundsInPixels(
-				cLabelClear,
-				xoffset + (buttonWidth + buttonSpacing) * 2 + 1,
-				46,
+		JLabel cLabelClear = UIElementFactory.createClickableLabel("CLEAR", defaultFont, 29f,
+				() -> {
+					expressionTextField.setText("");
+				});
+		setComponentBoundsInPixels(cLabelClear, xoffset + (buttonWidth + buttonSpacing) * 2 + 1, 46,
 				fw / getPixelSize() - 18
 						- (buttonWidth + buttonSpacing)
 								* (numberLabelRows[0].length + operatorLabelRows[0].length),
@@ -251,7 +225,8 @@ public class CalculatorWindow {
 		return titleLabel;
 	}
 
-	private JTextField getExpressionTextField(int fw, Font defaultFont, JTextField resultTextField) {
+	private JTextField getExpressionTextField(int fw, Font defaultFont,
+			JTextField resultTextField) {
 		JTextField expressionTextField = new JTextField("");
 		setComponentBoundsInPixels(expressionTextField, 8, 30, fw / getPixelSize() - 16, 14);
 		expressionTextField.setFont(defaultFont.deriveFont(32f));
@@ -303,9 +278,8 @@ public class CalculatorWindow {
 		resultTextField.setSelectionColor(textSelectColor);
 		resultTextField.setSelectedTextColor(Color.BLACK);
 		resultTextField.setHorizontalAlignment(JTextField.CENTER);
-		resultTextField.setBorder(
-				BorderFactory.createDashedBorder(new Color(0, 0, 0, 0.2f), getPixelSize(), 3,
-						2, false));
+		resultTextField.setBorder(BorderFactory.createDashedBorder(new Color(0, 0, 0, 0.2f),
+				getPixelSize(), 3, 2, false));
 		resultTextField.setEditable(false);
 		return resultTextField;
 	}
@@ -316,7 +290,8 @@ public class CalculatorWindow {
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				if (crossImage != null) {
-					g.drawImage(crossImage, 0, 0, 4 * getPixelSize(), 4 * getPixelSize(), new Color(0, 0, 0, 0), null);
+					g.drawImage(crossImage, 0, 0, 4 * getPixelSize(), 4 * getPixelSize(),
+							new Color(0, 0, 0, 0), null);
 				}
 			}
 		};
@@ -357,8 +332,8 @@ public class CalculatorWindow {
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				if (minimizeImage != null) {
-					g.drawImage(minimizeImage, 0, 0, 4 * getPixelSize(), 4 * getPixelSize(), new Color(0, 0, 0, 0),
-							null);
+					g.drawImage(minimizeImage, 0, 0, 4 * getPixelSize(), 4 * getPixelSize(),
+							new Color(0, 0, 0, 0), null);
 				}
 			}
 		};

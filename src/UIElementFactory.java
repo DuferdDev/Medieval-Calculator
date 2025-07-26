@@ -14,7 +14,8 @@ public class UIElementFactory {
 	private static final Color hoverBorderColor = new Color(0.2f, 0, 0, 0.5f);
 	private static final Color pressBorderColor = new Color(0.25f, 0, 0, 0.75f);
 
-	public static JLabel createClickableLabel(String text, Font font, float fontSize, Runnable clickAction) {
+	public static JLabel createClickableLabel(String text, Font font, float fontSize,
+			Runnable clickAction) {
 		JLabel button = new JLabel(text) {
 			@Override
 			protected void paintComponent(Graphics g) {
@@ -52,7 +53,8 @@ public class UIElementFactory {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				button.setForeground(pressTextColor);
-				button.setBorder(new LineBorder(pressBorderColor, CalculatorWindow.Instance.getPixelSize()));
+				button.setBorder(
+						new LineBorder(pressBorderColor, CalculatorWindow.Instance.getPixelSize()));
 			}
 
 			@Override
@@ -60,23 +62,27 @@ public class UIElementFactory {
 				Point mousePos = button.getMousePosition();
 				if (mousePos != null && button.contains(mousePos)) {
 					button.setForeground(hoverTextColor);
-					button.setBorder(new LineBorder(hoverBorderColor, CalculatorWindow.Instance.getPixelSize()));
+					button.setBorder(new LineBorder(hoverBorderColor,
+							CalculatorWindow.Instance.getPixelSize()));
 				} else {
 					button.setForeground(defaultTextColor);
-					button.setBorder(new LineBorder(defaultBorderColor, CalculatorWindow.Instance.getPixelSize()));
+					button.setBorder(new LineBorder(defaultBorderColor,
+							CalculatorWindow.Instance.getPixelSize()));
 				}
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				button.setForeground(hoverTextColor);
-				button.setBorder(new LineBorder(hoverBorderColor, CalculatorWindow.Instance.getPixelSize()));
+				button.setBorder(
+						new LineBorder(hoverBorderColor, CalculatorWindow.Instance.getPixelSize()));
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				button.setForeground(defaultTextColor);
-				button.setBorder(new LineBorder(defaultBorderColor, CalculatorWindow.Instance.getPixelSize()));
+				button.setBorder(new LineBorder(defaultBorderColor,
+						CalculatorWindow.Instance.getPixelSize()));
 			}
 
 		});
@@ -85,7 +91,8 @@ public class UIElementFactory {
 		button.setFocusable(false);
 		button.setBackground(new Color(182, 142, 58));
 		button.setForeground(defaultTextColor);
-		button.setBorder(new LineBorder(defaultBorderColor, CalculatorWindow.Instance.getPixelSize()));
+		button.setBorder(
+				new LineBorder(defaultBorderColor, CalculatorWindow.Instance.getPixelSize()));
 		button.setHorizontalAlignment(JLabel.CENTER);
 		return button;
 	}
