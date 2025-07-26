@@ -34,7 +34,7 @@ This is a simple calculator app made in Java Swing. Just in medieval theme.
 - `tan` - Tangent
 - `cot` - Cotangent
 - `rad` - Takes degrees and converts them to radians
-- `deg` - same as 'rad' but the other way around
+- `deg` - same as `rad` but the other way around
 - `round` - Round
 - `floor` - Floor
 - `ceil` - Ceil
