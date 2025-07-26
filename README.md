@@ -6,7 +6,7 @@ This is a simple calculator Java Swing app. Just in medieval theme.
 
 ## DEPENDENCIES
 
-- JDK 21+
+- JDK 21+ (available at https://www.oracle.com/java/technologies/downloads/#java21)
 
 ## FEATURES
 
