@@ -1,5 +1,5 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.imageio.ImageIO;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
