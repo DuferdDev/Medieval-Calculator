@@ -81,6 +81,7 @@ public class Expression {
 		case "*" -> exps[0] * exps[1];
 		case "/" -> exps[0] / exps[1];
 		case "^" -> Math.pow(exps[0], exps[1]);
+		case "neg" -> -exps[0];
 		case "sqrt" -> Math.sqrt(exps[0]);
 		case "abs" -> Math.abs(exps[0]);
 		case "sin" -> Math.sin(exps[0]);
@@ -117,15 +118,18 @@ public class Expression {
 			}
 		}
 
-		if (subexpressionStrings.size() > 0) {
+		if (!subexpressionStrings.isEmpty()) {
 			String funStr = subexpressionStrings.get(0);
-			System.out.printf("funStr: %s\n", funStr);
 			if (funStr.contains("(")) {
 				int bracketIndex = funStr.indexOf('(');
 				String functionString = funStr.substring(0, bracketIndex);
 				String functionParameter = funStr.substring(bracketIndex);
 				if (hasBracketsAround(functionParameter)) {
-					operation = functionString;
+					if (functionString.equals("-")) {
+						operation = "neg";
+					} else {
+						operation = functionString;
+					}
 					expressions.add(new Expression(functionParameter));
 				}
 			} else {
@@ -206,18 +210,27 @@ public class Expression {
 				}
 				break;
 			case '-':
-				if (insideBrackets > 0) {
+				// if (insideBrackets > 0) {
+				// currentStringPart += curc;
+				// } else {
+				// if (currentStringPart.isEmpty()) {
+				// currentStringPart += curc;
+				// } else {
+				// subexpressionStrings.add(currentStringPart);
+				// currentStringPart = "";
+				// currentStringPart += curc;
+				// subexpressionStrings.add(currentStringPart);
+				// currentStringPart = "";
+				// }
+				// }
+				if (insideBrackets > 0 || currentStringPart.isEmpty()) {
 					currentStringPart += curc;
 				} else {
-					if (currentStringPart.isEmpty()) {
-						currentStringPart += curc;
-					} else {
-						subexpressionStrings.add(currentStringPart);
-						currentStringPart = "";
-						currentStringPart += curc;
-						subexpressionStrings.add(currentStringPart);
-						currentStringPart = "";
-					}
+					subexpressionStrings.add(currentStringPart);
+					currentStringPart = "";
+					currentStringPart += curc;
+					subexpressionStrings.add(currentStringPart);
+					currentStringPart = "";
 				}
 				break;
 			default:
