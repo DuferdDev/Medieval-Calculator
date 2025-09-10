@@ -1,4 +1,6 @@
 .vscode/
+.idea/
 out/
 dist/
 todo.md
+Medieval-Calculator.iml
